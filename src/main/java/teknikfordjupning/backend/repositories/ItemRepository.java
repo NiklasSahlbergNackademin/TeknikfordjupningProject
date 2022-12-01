@@ -7,7 +7,7 @@ import teknikfordjupning.backend.model.Item;
 import java.util.Optional;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
-    void deleteCustomerById(Long id);
+    void deleteItemById(Long id);
 
     Optional<Item> findItemById(Long id);
 }

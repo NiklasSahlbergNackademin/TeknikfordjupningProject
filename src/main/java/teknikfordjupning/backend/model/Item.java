@@ -9,11 +9,12 @@ public class Item implements Serializable {
      public Item() {}
 
 
-    public Item(Long id, String brand, String type, String name) {
+    public Item(Long id, String brand, String type, String name, String itemCode) {
         this.id = id;
         this.brand = brand;
         this.type = type;
         this.name = name;
+        this.itemCode = itemCode;
     }
 
     @Id
@@ -23,10 +24,7 @@ public class Item implements Serializable {
     private String brand;
     private String type;
     private String name;
-
-
-
-
+    private String itemCode;
 
     @Override
     public String toString() {
@@ -35,8 +33,17 @@ public class Item implements Serializable {
                 ", brand='" + brand + '\'' +
                 ", type='" + type + '\'' +
                 ", name='" + name + '\'' +
+                ", itemCode='" + itemCode + '\'' +
                 '}';
     }
+
+    public String getItemCode() {             
+         return itemCode;
+     }
+
+     public void setItemCode(String itemCode) {
+         this.itemCode = itemCode;
+     }
 
     public Long getId() {
         return id;
