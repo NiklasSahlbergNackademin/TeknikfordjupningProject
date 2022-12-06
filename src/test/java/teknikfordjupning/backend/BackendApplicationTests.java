@@ -1,4 +1,4 @@
-package teknikfordjupning.backend;
+/*package teknikfordjupning.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,3 +11,5 @@ class BackendApplicationTests {
 	}
 
 }
+
+ */
