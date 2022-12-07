@@ -22,7 +22,6 @@ public class Customer implements Serializable {
 
 
 
-
     @Override
     public String toString() {
         return "Customer{" +
