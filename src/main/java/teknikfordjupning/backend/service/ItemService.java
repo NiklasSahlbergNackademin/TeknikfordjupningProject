@@ -1,5 +1,6 @@
 package teknikfordjupning.backend.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import teknikfordjupning.backend.exceptions.ItemNotFoundException;
@@ -35,8 +36,11 @@ public class ItemService {
        return itemRepository.findItemById(id).orElseThrow(() -> new ItemNotFoundException("The item with id : " + id + "was not found" ));
     }
 
+    @Transactional
     public void deleteItem(Long id) {
+
         itemRepository.deleteItemById(id);
+        System.out.println("item has been deleted");
     }
 
 

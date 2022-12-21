@@ -1,6 +1,8 @@
 package teknikfordjupning.backend.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
 
 import java.io.Serializable;
 
