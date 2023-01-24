@@ -1,6 +1,8 @@
 package teknikfordjupning.backend.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import teknikfordjupning.backend.exceptions.ItemNotFoundException;
 import teknikfordjupning.backend.model.Item;
@@ -17,6 +19,7 @@ public class ItemService {
     public ItemService(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }
+
 
     public Item addItem(Item item){
         item.setItemCode(UUID.randomUUID().toString());
@@ -35,6 +38,7 @@ public class ItemService {
        return itemRepository.findItemById(id).orElseThrow(() -> new ItemNotFoundException("The item with id : " + id + "was not found" ));
     }
 
+    @Transactional
     public void deleteItem(Long id) {
         itemRepository.deleteItemById(id);
     }

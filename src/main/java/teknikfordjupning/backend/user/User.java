@@ -23,6 +23,9 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue
     private Integer id;
+
+
+
     private String firstname;
     private String lastname;
     private String email;
@@ -33,6 +36,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
@@ -40,6 +44,8 @@ public class User implements UserDetails {
     public String getPassword() {
         return password;
     }
+
+
 
     @Override
     public String getUsername() {

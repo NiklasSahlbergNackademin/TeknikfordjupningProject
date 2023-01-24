@@ -20,9 +20,27 @@ public class AuthenticationService {
     private final JwtService jwtService;
 
     private final AuthenticationManager authenticationManager;
-    public AuthenticationResponse register(RegisterRequest request) {
+
+
+    public AuthenticationResponse registerAdmin(RegisterRequest request) {
         var user = User.builder()
-                .firstname(request.getFirstName())
+                .firstname(request.getFirstname())
+                .lastname(request.getLastname())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .role(Role.ADMIN) //Från klassen jag skapat
+                .build();  //Ska vara User klassen jag skapat
+
+        repository.save(user);
+        System.out.println(user.getAuthorities());
+
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder().token(jwtToken).build();
+    }
+
+    public AuthenticationResponse registerUser(RegisterRequest request) {
+        var user = User.builder()
+                .firstname(request.getFirstname())
                 .lastname(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -30,6 +48,7 @@ public class AuthenticationService {
                 .build();  //Ska vara User klassen jag skapat
 
         repository.save(user);
+        System.out.println(user.getAuthorities());
 
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder().token(jwtToken).build();
@@ -42,9 +61,10 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
+
         var user = repository.findByEmail(request.getEmail())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder().token(jwtToken).build();
+        return AuthenticationResponse.builder().user(user).token(jwtToken).build();
     }
 }

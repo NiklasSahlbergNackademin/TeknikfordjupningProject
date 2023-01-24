@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import teknikfordjupning.backend.user.User;
 
 @Data
 @Builder
@@ -11,5 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthenticationResponse {
 
+
+
     private String token;
+    private User user;
 }

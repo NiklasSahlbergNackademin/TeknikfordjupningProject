@@ -2,11 +2,15 @@ package teknikfordjupning.backend;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import teknikfordjupning.backend.model.Customer;
 import teknikfordjupning.backend.model.Item;
 import teknikfordjupning.backend.service.CustomerService;
 import teknikfordjupning.backend.service.ItemService;
+import teknikfordjupning.backend.user.Role;
+import teknikfordjupning.backend.user.User;
 
 import java.util.List;
 
@@ -15,6 +19,9 @@ import java.util.List;
 public class ItemResource {
 
         private final ItemService itemService;
+
+
+
 
         public ItemResource(ItemService itemService) {
             this.itemService = itemService;
@@ -31,18 +38,22 @@ public class ItemResource {
             return new ResponseEntity<>(item, HttpStatus.OK);
         }
         @PostMapping("/add")
+        @PreAuthorize("hasAuthority('ADMIN')")
         public ResponseEntity <Item> addItem(@RequestBody Item item){
+
             itemService.addItem(item);
             return new ResponseEntity<>(item, HttpStatus.CREATED);
         }
 
         @PutMapping("/update")
+        @PreAuthorize("hasAuthority('ADMIN')")
         public ResponseEntity <Item> updateItem (@RequestBody Item item){
             itemService.updateItem(item);
             return new ResponseEntity<>(item, HttpStatus.OK);
         }
 
         @DeleteMapping("/delete/{id}")
+        @PreAuthorize("hasAuthority('ADMIN')")
         public ResponseEntity<?> deleteItem(@PathVariable Long id){
             itemService.deleteItem(id);
             return new ResponseEntity<>(HttpStatus.OK);
