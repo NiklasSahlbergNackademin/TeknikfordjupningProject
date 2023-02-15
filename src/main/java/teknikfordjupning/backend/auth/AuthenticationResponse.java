@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import teknikfordjupning.backend.user.User;
+import teknikfordjupning.backend.model.User;
 
 @Data
 @Builder

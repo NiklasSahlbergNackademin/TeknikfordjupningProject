@@ -8,7 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import teknikfordjupning.backend.config.JwtService;
 import teknikfordjupning.backend.user.Role;
-import teknikfordjupning.backend.user.User;
+import teknikfordjupning.backend.model.User;
 import teknikfordjupning.backend.user.UserRepository;
 
 @Service

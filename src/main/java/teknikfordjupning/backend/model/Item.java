@@ -45,6 +45,18 @@ public class Item implements Serializable {
 
     private String itemCode;
 
+    @ManyToOne()
+   // @JoinColumn(name = "order_id")
+    private Order order;
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
 
     @Override
     public String toString() {

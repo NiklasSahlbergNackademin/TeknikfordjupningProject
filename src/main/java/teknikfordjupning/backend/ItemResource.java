@@ -2,15 +2,10 @@ package teknikfordjupning.backend;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import teknikfordjupning.backend.model.Customer;
 import teknikfordjupning.backend.model.Item;
-import teknikfordjupning.backend.service.CustomerService;
 import teknikfordjupning.backend.service.ItemService;
-import teknikfordjupning.backend.user.Role;
-import teknikfordjupning.backend.user.User;
 
 import java.util.List;
 
@@ -19,6 +14,7 @@ import java.util.List;
 public class ItemResource {
 
         private final ItemService itemService;
+
 
 
 
@@ -59,4 +55,6 @@ public class ItemResource {
             return new ResponseEntity<>(HttpStatus.OK);
 
         }
+
+
 }

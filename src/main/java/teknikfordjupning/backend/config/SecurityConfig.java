@@ -29,7 +29,7 @@ public class SecurityConfig {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/auth/**", "/customer/**", "/item/**", "/item/all")   //Whitelist within here
+                .requestMatchers("/api/v1/auth/**", "/customer/**", "/item/**", "/item/all", "/orders")   //Whitelist within here
                 .permitAll()
                 .anyRequest()
                 .authenticated() //De som inte är whitelistade ska vara authenticated

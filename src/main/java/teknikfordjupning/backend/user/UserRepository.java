@@ -1,6 +1,7 @@
 package teknikfordjupning.backend.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import teknikfordjupning.backend.model.User;
 
 import java.util.Optional;
 

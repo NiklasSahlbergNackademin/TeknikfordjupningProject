@@ -3,6 +3,8 @@ package teknikfordjupning.backend.model;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 public class Customer implements Serializable {
     public Customer() {}
@@ -19,7 +21,6 @@ public class Customer implements Serializable {
     private String name;
     private String email;
     private String customerCode;
-
 
 
     @Override
